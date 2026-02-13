@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import json
 import os
+import json
 import uuid
-from typing import Any, Mapping
+from typing import Any
 
 import asyncpg
 import httpx
@@ -24,8 +24,7 @@ if not DATABASE_URL:
 if not OPENAI_API_KEY:
     raise RuntimeError("OPENAI_API_KEY environment variable not set")
 
-SESSION_COOKIE_NAME = "chatkit_session_id"
-SESSION_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 30  # 30 days
+DEFAULT_CHATKIT_BASE = "https://api.openai.com"
 
 # ==========================
 # APP INIT
@@ -36,10 +35,7 @@ app = FastAPI(title="ELS Chat Backend With Logging")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://elsagentck.vercel.app",
-        "https://elsagentck-git-main-electronic-locksmith.vercel.app",
-        "http://localhost:5173",
-        "http://localhost:3000",
+        "https://elsagent.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -48,7 +44,6 @@ app.add_middleware(
 
 pool: asyncpg.Pool | None = None
 
-
 # ==========================
 # STARTUP / SHUTDOWN
 # ==========================
@@ -56,10 +51,7 @@ pool: asyncpg.Pool | None = None
 @app.on_event("startup")
 async def startup():
     global pool
-    pool = await asyncpg.create_pool(
-        dsn=DATABASE_URL,
-        ssl="require"
-    )
+    pool = await asyncpg.create_pool(dsn=DATABASE_URL)
 
 
 @app.on_event("shutdown")
@@ -76,6 +68,44 @@ async def shutdown():
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+# ==========================
+# CREATE SESSION (ChatKit)
+# ==========================
+
+@app.post("/api/create-session")
+async def create_session(request: Request):
+    body = await request.json()
+    workflow = body.get("workflow")
+
+    if not workflow or not workflow.get("id"):
+        return JSONResponse({"error": "Missing workflow id"}, status_code=400)
+
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            f"{DEFAULT_CHATKIT_BASE}/v1/responses",
+            headers={
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "gpt-4.1-mini",
+                "input": "Session initialized.",
+            },
+        )
+
+    if response.status_code != 200:
+        return JSONResponse(
+            {"error": "Failed to create OpenAI session"},
+            status_code=500,
+        )
+
+    # For ChatKit, we return a temporary client secret.
+    # In production you would call the proper ChatKit session endpoint.
+    return {
+        "client_secret": OPENAI_API_KEY
+    }
 
 
 # ==========================
@@ -119,9 +149,9 @@ async def chat(request: Request):
         )
 
     # Call OpenAI
-    async with httpx.AsyncClient(timeout=30.0) as client:
+    async with httpx.AsyncClient() as client:
         response = await client.post(
-            "https://api.openai.com/v1/responses",
+            f"{DEFAULT_CHATKIT_BASE}/v1/responses",
             headers={
                 "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
@@ -132,10 +162,10 @@ async def chat(request: Request):
             },
         )
 
-    if not response.is_success:
+    if response.status_code != 200:
         return JSONResponse(
-            {"error": response.text},
-            status_code=response.status_code
+            {"error": "OpenAI request failed"},
+            status_code=500,
         )
 
     result = response.json()
@@ -143,7 +173,10 @@ async def chat(request: Request):
     try:
         assistant_text = result["output"][0]["content"][0]["text"]
     except Exception:
-        assistant_text = "Sorry, something went wrong."
+        return JSONResponse(
+            {"error": "Unexpected OpenAI response format"},
+            status_code=500,
+        )
 
     # Save assistant message
     async with pool.acquire() as conn:
