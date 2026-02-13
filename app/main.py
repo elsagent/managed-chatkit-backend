@@ -15,11 +15,15 @@ from fastapi.responses import JSONResponse
 # CONFIGURATION
 # ==========================
 
-# 🔴 TEMPORARY: Hardcoded DB for debugging
-# We remove dotenv completely to avoid parsing errors
-DATABASE_URL = "postgresql://neondb_owner:npg_lzpv6frtk7eV@ep-bitter-frog-ai5ww9ae-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL = os.getenv("DATABASE_URL")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-DEFAULT_CHATKIT_BASE = "https://api.openai.com"
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL environment variable not set")
+
+if not OPENAI_API_KEY:
+    raise RuntimeError("OPENAI_API_KEY environment variable not set")
+
 SESSION_COOKIE_NAME = "chatkit_session_id"
 SESSION_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 30  # 30 days
 
@@ -31,7 +35,12 @@ app = FastAPI(title="ELS Chat Backend With Logging")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all during development
+    allow_origins=[
+        "https://elsagentck.vercel.app",
+        "https://elsagentck-git-main-electronic-locksmith.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -47,7 +56,10 @@ pool: asyncpg.Pool | None = None
 @app.on_event("startup")
 async def startup():
     global pool
-    pool = await asyncpg.create_pool(dsn=DATABASE_URL)
+    pool = await asyncpg.create_pool(
+        dsn=DATABASE_URL,
+        ssl="require"
+    )
 
 
 @app.on_event("shutdown")
@@ -82,10 +94,6 @@ async def chat(request: Request):
     if not thread_id:
         thread_id = str(uuid.uuid4())
 
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        return JSONResponse({"error": "Missing OPENAI_API_KEY"}, status_code=500)
-
     # Save user message
     async with pool.acquire() as conn:
         await conn.execute(
@@ -111,11 +119,11 @@ async def chat(request: Request):
         )
 
     # Call OpenAI
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=30.0) as client:
         response = await client.post(
             "https://api.openai.com/v1/responses",
             headers={
-                "Authorization": f"Bearer {api_key}",
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
             },
             json={
@@ -124,9 +132,18 @@ async def chat(request: Request):
             },
         )
 
+    if not response.is_success:
+        return JSONResponse(
+            {"error": response.text},
+            status_code=response.status_code
+        )
+
     result = response.json()
 
-    assistant_text = result["output"][0]["content"][0]["text"]
+    try:
+        assistant_text = result["output"][0]["content"][0]["text"]
+    except Exception:
+        assistant_text = "Sorry, something went wrong."
 
     # Save assistant message
     async with pool.acquire() as conn:
