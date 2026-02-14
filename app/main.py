@@ -47,11 +47,9 @@ async def create_session(payload: dict):
                 "OpenAI-Beta": "chatkit_beta=v1",
             },
             json={
-                "workflow": {"id": workflow_id},
-                "user": {
-                    "id": "local-user-1"
-                }
-            },
+    "workflow": {"id": workflow_id},
+    "user": "local-user-1"
+},
         )
 
     if response.status_code != 200:
