@@ -16,18 +16,20 @@ app = FastAPI(title="ELS Agent Backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # for now allow all while debugging
+    allow_origins=["*"],  # allow all while debugging
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 👇 NOW include router AFTER app exists
+# Include any additional routers AFTER app is created
 app.include_router(chatkit_router)
+
 
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
 
 @app.post("/api/create-session")
 async def create_session(payload: dict):
@@ -42,13 +44,22 @@ async def create_session(payload: dict):
             headers={
                 "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
+                "OpenAI-Beta": "chatkit_beta=v1",  # 🔥 REQUIRED HEADER
             },
-            json={"workflow": {"id": workflow_id}},
+            json={
+                "workflow": {"id": workflow_id}
+            },
         )
 
     if response.status_code != 200:
-        return JSONResponse({"error": response.text}, status_code=500)
+        return JSONResponse(
+            {"error": response.text},
+            status_code=response.status_code,
+        )
 
     data = response.json()
 
-    return {"client_secret": data.get("client_secret")}
+    return {
+        "client_secret": data.get("client_secret"),
+        "expires_after": data.get("expires_after"),
+    }
