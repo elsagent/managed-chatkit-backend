@@ -22,21 +22,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include any additional routers AFTER app is created
 app.include_router(chatkit_router)
-
 
 @app.get("/health")
 async def health():
     return {"status": "ok"}
-
 
 @app.post("/api/create-session")
 async def create_session(payload: dict):
     workflow_id = payload.get("workflow", {}).get("id")
 
     if not workflow_id:
-        return JSONResponse({"error": "Missing workflow id"}, status_code=400)
+        return JSONResponse(
+            {"error": "Missing workflow id"},
+            status_code=400
+        )
 
     async with httpx.AsyncClient() as client:
         response = await client.post(
@@ -44,22 +44,24 @@ async def create_session(payload: dict):
             headers={
                 "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json",
-                "OpenAI-Beta": "chatkit_beta=v1",  # 🔥 REQUIRED HEADER
+                "OpenAI-Beta": "chatkit_beta=v1",
             },
             json={
-                "workflow": {"id": workflow_id}
+                "workflow": {"id": workflow_id},
+                "user": {
+                    "id": "local-user-1"
+                }
             },
         )
 
     if response.status_code != 200:
         return JSONResponse(
             {"error": response.text},
-            status_code=response.status_code,
+            status_code=500
         )
 
     data = response.json()
 
     return {
-        "client_secret": data.get("client_secret"),
-        "expires_after": data.get("expires_after"),
+        "client_secret": data.get("client_secret")
     }
