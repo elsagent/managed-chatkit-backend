@@ -1,0 +1,903 @@
+{
+  "exported_at": "2026-02-14T15:35:26.086209Z",
+  "thread_count": 69,
+  "threads": [
+    {
+      "thread": {
+        "id": "cthr_69908e2466308196b96731f548e67cb80543890e87fa3734",
+        "object": "chatkit.thread",
+        "created_at": 1771081252,
+        "status": {
+          "type": "active"
+        },
+        "title": "Meet the AI Assistant",
+        "user": "local-user-1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69908d533ddc8190bc5dbd0b10c7b9a70e73344d20de7804",
+        "object": "chatkit.thread",
+        "created_at": 1771081043,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introducing Your AI Assistant",
+        "user": "local-user-1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69908d0a15408194ba1143de1820baa7099c72797c67bd79",
+        "object": "chatkit.thread",
+        "created_at": 1771080970,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "local-user-1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69908c2bd1ec81908c3e710ce520813204742791af6d342f",
+        "object": "chatkit.thread",
+        "created_at": 1771080747,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introducing the AI Assistant",
+        "user": "local-user-1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69908b47afec8197b7f1366c4247e90206160cc781cdcfcb",
+        "object": "chatkit.thread",
+        "created_at": 1771080519,
+        "status": {
+          "type": "active"
+        },
+        "title": "AI Identity Inquiry",
+        "user": "local-user-1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_698f6d1fc3548196906ed4f2946743cc0cb36999a5059f5a",
+        "object": "chatkit.thread",
+        "created_at": 1771007263,
+        "status": {
+          "type": "active"
+        },
+        "title": "Opening AI User Greeting",
+        "user": "7dd5fa89-de74-4e83-b512-1d1a0024c07b"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_698f6c9013788194be1891372b8a7c44084f699e75c8e04b",
+        "object": "chatkit.thread",
+        "created_at": 1771007120,
+        "status": {
+          "type": "active"
+        },
+        "title": "Starting Conversation with AI",
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_698f6c8b45c081948efcc3f47d01c72f0b26e508b8027d80",
+        "object": "chatkit.thread",
+        "created_at": 1771007115,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6984be19e5c4819595c856cd75d04e240f65bacb7b1662f6",
+        "object": "chatkit.thread",
+        "created_at": 1770307097,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock repair assistance",
+        "user": "6ea9763f-d485-4d1e-ae47-36542de7af94"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69836650d9388197974cc7c7e566efd50184ff635a72ff8f",
+        "object": "chatkit.thread",
+        "created_at": 1770219088,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto XS4 Beeping Issue",
+        "user": "980838d6-b110-4497-8b40-627d72955119"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69836386c88881958701af71ecf9c0910323355d03279459",
+        "object": "chatkit.thread",
+        "created_at": 1770218374,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Help Request",
+        "user": "980838d6-b110-4497-8b40-627d72955119"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980e29a5c1881908c45b67547c74a0c0d004f92749e527a",
+        "object": "chatkit.thread",
+        "created_at": 1770054298,
+        "status": {
+          "type": "active"
+        },
+        "title": "Help Request Dialogue",
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980cf94f9d481959169c6598b27c81f059b3089a8737eab",
+        "object": "chatkit.thread",
+        "created_at": 1770049428,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Access Guidance",
+        "user": "27a9ecb9-4bce-4caa-8778-67227db836b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980ce25ef548195bd0f47b61fcff9d4035a985849336e5e",
+        "object": "chatkit.thread",
+        "created_at": 1770049061,
+        "status": {
+          "type": "active"
+        },
+        "title": "Troubleshooting Slato XS4 Red Blink",
+        "user": "27a9ecb9-4bce-4caa-8778-67227db836b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980ccd0819081978db8696286d6007608110eb78417f2ae",
+        "object": "chatkit.thread",
+        "created_at": 1770048720,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Troubleshooting Help",
+        "user": "27a9ecb9-4bce-4caa-8778-67227db836b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980cba5ad4c8190966ce32dd372426f093f1017a7a5f592",
+        "object": "chatkit.thread",
+        "created_at": 1770048421,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Help Session",
+        "user": "27a9ecb9-4bce-4caa-8778-67227db836b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980cb552d608195899b1473070152e5092f2baedda5763f",
+        "object": "chatkit.thread",
+        "created_at": 1770048341,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introducing Your AI Assistant",
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980c9a254788196a0a8be6e3739d8eb0df13b137d20d7dc",
+        "object": "chatkit.thread",
+        "created_at": 1770047906,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto XS4 Beeping Troubleshooting",
+        "user": "b099e47a-97d0-4c22-8745-5569d4f7f4b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6980c736cb488195bfa3b2be524d4504065758ceb2d30d00",
+        "object": "chatkit.thread",
+        "created_at": 1770047286,
+        "status": {
+          "type": "active"
+        },
+        "title": "AI Help Session",
+        "user": "b099e47a-97d0-4c22-8745-5569d4f7f4b3"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697d15877c74819398749dd3a044f2ff03d26609f6a460f2",
+        "object": "chatkit.thread",
+        "created_at": 1769805191,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto LED Beeping Troubleshooting",
+        "user": "6643c6f9-0b06-4db3-8319-f1990c951815"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697cebc0ef508194af819f6522e3030a02d95b4692439748",
+        "object": "chatkit.thread",
+        "created_at": 1769794496,
+        "status": {
+          "type": "active"
+        },
+        "title": "Meet the AI",
+        "user": "8442b4b5-e526-4aa7-a2b9-b1d17a41e790"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697cd311c4588190a7d0de277c3f579d01f5f5ff35da421a",
+        "object": "chatkit.thread",
+        "created_at": 1769788177,
+        "status": {
+          "type": "active"
+        },
+        "title": "Door Lock Troubleshooting",
+        "user": "de04e8fe-e9c3-446a-9f92-940d39217686"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697cc8da76c0819582fe9c76d68642a406ac991524a72830",
+        "object": "chatkit.thread",
+        "created_at": 1769785562,
+        "status": {
+          "type": "active"
+        },
+        "title": "Unlocking Salto Screen",
+        "user": "de04e8fe-e9c3-446a-9f92-940d39217686"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697b8309c1048197b1a481521e9c89970ce7d300224e23dd",
+        "object": "chatkit.thread",
+        "created_at": 1769702153,
+        "status": {
+          "type": "active"
+        },
+        "title": "Kiosk Mode Troubleshooting",
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697b656f69d8819781e97634a315419f05038045700c3835",
+        "object": "chatkit.thread",
+        "created_at": 1769694575,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Troubleshooting with AI",
+        "user": "0b880d6a-c0b3-4bc2-9c47-cfa1a27d0cb0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697b6296c5c08190bf814375b1fe81cf0bdff595ddee21a5",
+        "object": "chatkit.thread",
+        "created_at": 1769693846,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Battery Change Guide",
+        "user": "0b880d6a-c0b3-4bc2-9c47-cfa1a27d0cb0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697b5f5ca1fc8197be783bfd7070a3f80355c0d5793df89e",
+        "object": "chatkit.thread",
+        "created_at": 1769693020,
+        "status": {
+          "type": "active"
+        },
+        "title": "Troubleshooting Peripheral Error",
+        "user": "84509912-2a38-4d24-8558-5fa3553d25d1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697a78e057988196955eadfcb00fd19703c08f04921bcf02",
+        "object": "chatkit.thread",
+        "created_at": 1769634016,
+        "status": {
+          "type": "active"
+        },
+        "title": "Gu\u00eda para Salto Manual",
+        "user": "84509912-2a38-4d24-8558-5fa3553d25d1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697929d5331c81909501ad19348aa9630ba23857e96fb3cb",
+        "object": "chatkit.thread",
+        "created_at": 1769548245,
+        "status": {
+          "type": "active"
+        },
+        "title": "ESA Troubleshooting Session",
+        "user": "44bcf467-8c86-4998-90da-1295ef035ba1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69790253dfd881908cad53d880b0dfa70fa21b0ebfaf6aac",
+        "object": "chatkit.thread",
+        "created_at": 1769538131,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto Lock Not Working",
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69790240cb0881969972aa300454ae7f0ca2142ce104738b",
+        "object": "chatkit.thread",
+        "created_at": 1769538112,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6977c1ed30448194a8cc9a42bc64247e0ea31f384b88fbd2",
+        "object": "chatkit.thread",
+        "created_at": 1769456109,
+        "status": {
+          "type": "active"
+        },
+        "title": "Stuck Door Lock Help",
+        "user": "6afcb965-7ce4-4b3b-b918-a31693daebac"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69779957774c8195b02bf97ffb4535f403cf48b3c3ddf34d",
+        "object": "chatkit.thread",
+        "created_at": 1769445719,
+        "status": {
+          "type": "active"
+        },
+        "title": "Door Programming Help",
+        "user": "6afcb965-7ce4-4b3b-b918-a31693daebac"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6977794650248190b26acaa4adce82920e35409d2c729a84",
+        "object": "chatkit.thread",
+        "created_at": 1769437510,
+        "status": {
+          "type": "active"
+        },
+        "title": "Backing Up Your Database",
+        "user": "91ed56c3-59df-4b19-a629-0314fe6413b2"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69776a4a4778819784e8b15bed3cb30c02ae7c710a98b279",
+        "object": "chatkit.thread",
+        "created_at": 1769433674,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto XS4 unlock issue",
+        "user": "6afcb965-7ce4-4b3b-b918-a31693daebac"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697766cb166c8193a8628dff08eecd04046a89085418f8a1",
+        "object": "chatkit.thread",
+        "created_at": 1769432778,
+        "status": {
+          "type": "active"
+        },
+        "title": "Installing Salto X4 Plus",
+        "user": "6afcb965-7ce4-4b3b-b918-a31693daebac"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973e6996afc8197a25a8b443b01f38d0c0b7c6efdd9da2a",
+        "object": "chatkit.thread",
+        "created_at": 1769203353,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto Lock Red Blinking",
+        "user": "0b880d6a-c0b3-4bc2-9c47-cfa1a27d0cb0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973e5985058819084feac10f92eb8bb0081daea6965b291",
+        "object": "chatkit.thread",
+        "created_at": 1769203096,
+        "status": {
+          "type": "active"
+        },
+        "title": "Today Weather Chat",
+        "user": "0b880d6a-c0b3-4bc2-9c47-cfa1a27d0cb0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973c89a41c08195a79de22bc7dc1c7706a667a2baf19b39",
+        "object": "chatkit.thread",
+        "created_at": 1769195674,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto Lock Programming Help",
+        "user": "ae8b982f-4c60-471f-8216-4a939c5e9484"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973c5f29f088196991a3521674611580ace14fb158e1e05",
+        "object": "chatkit.thread",
+        "created_at": 1769194994,
+        "status": {
+          "type": "active"
+        },
+        "title": "XS4 Original Plus Voltage",
+        "user": "0b880d6a-c0b3-4bc2-9c47-cfa1a27d0cb0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973c5f28ae48194b4cb57f2e0d0e7fa026b702a6ed02575",
+        "object": "chatkit.thread",
+        "created_at": 1769194994,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto XS4 Voltage Inquiry",
+        "user": "ae8b982f-4c60-471f-8216-4a939c5e9484"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973b59be4a081949d8e8fc6abd3e6010bc75ff611586466",
+        "object": "chatkit.thread",
+        "created_at": 1769190811,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introductory AI Conversation",
+        "user": "ebe30e3e-ea84-4a32-83f4-9b036c92cabb"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973a2efb6788194a5d088ed1aa5cb910dcebaa24209d85b",
+        "object": "chatkit.thread",
+        "created_at": 1769186031,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto Computer Reboot Guide",
+        "user": "de04e8fe-e9c3-446a-9f92-940d39217686"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69739918ecc481968da8e3bd6f9e14dd09183934e4f27e82",
+        "object": "chatkit.thread",
+        "created_at": 1769183512,
+        "status": {
+          "type": "active"
+        },
+        "title": "Managing Guest Keys After Hours",
+        "user": "de04e8fe-e9c3-446a-9f92-940d39217686"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697392bd193081908a66a93b0cc7e7a1053aef62de1e67a7",
+        "object": "chatkit.thread",
+        "created_at": 1769181884,
+        "status": {
+          "type": "active"
+        },
+        "title": "Setting Master Key Expiration",
+        "user": "0e03d2fb-4a84-4b7d-8eab-86908386b947"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697378b26de081958e7bebacbfb7363808573211b4c1b989",
+        "object": "chatkit.thread",
+        "created_at": 1769175218,
+        "status": {
+          "type": "active"
+        },
+        "title": "Salto Lock Emergency Help",
+        "user": "ae8b982f-4c60-471f-8216-4a939c5e9484"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973771444808197833fe8c9f58e18530e39a9566ac2b093",
+        "object": "chatkit.thread",
+        "created_at": 1769174804,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introductory AI Conversation",
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69737629fed48195ab1350011917df000888dbc8faf7914b",
+        "object": "chatkit.thread",
+        "created_at": 1769174569,
+        "status": {
+          "type": "active"
+        },
+        "title": "Onity encoder database backup",
+        "user": "84509912-2a38-4d24-8558-5fa3553d25d1"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697375d2a218819087d59cec94ff90b40713a31e4b7451e6",
+        "object": "chatkit.thread",
+        "created_at": 1769174482,
+        "status": {
+          "type": "active"
+        },
+        "title": "Door Lock Troubleshooting",
+        "user": "6643c6f9-0b06-4db3-8319-f1990c951815"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973746ccedc8197aea68151f56b99d8085e17e06591e4ca",
+        "object": "chatkit.thread",
+        "created_at": 1769174124,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Troubleshooting Session",
+        "user": "91ed56c3-59df-4b19-a629-0314fe6413b2"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6973741d2b248196a30cb557af5424fd037164b759820692",
+        "object": "chatkit.thread",
+        "created_at": 1769174045,
+        "status": {
+          "type": "active"
+        },
+        "title": "Kiosk Mode Troubleshooting",
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69737310d8d08196ab7d6e3ead8123310f81cd8500a0a07f",
+        "object": "chatkit.thread",
+        "created_at": 1769173776,
+        "status": {
+          "type": "active"
+        },
+        "title": "Connecting to Onity HT24",
+        "user": "f9bb8421-6e62-426b-8e50-cbefd61350df"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972ffe6a9908197a664d3024b6129970083b0ed4e7d4657",
+        "object": "chatkit.thread",
+        "created_at": 1769144294,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock help request",
+        "user": "2751840e-0d25-4ba8-a4e0-184814daa0d9"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972ffa3e19481949556fb88d5d4d05902e85ccf63891a4f",
+        "object": "chatkit.thread",
+        "created_at": 1769144227,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "e96e13c6-07ac-4a88-ab22-1f79721be4be"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972f9a21ad88190b23fe29a8438a1240f1f09705bd6eb32",
+        "object": "chatkit.thread",
+        "created_at": 1769142690,
+        "status": {
+          "type": "active"
+        },
+        "title": "Hello AI Conversation",
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972f98c6e6481938c44cee6f4470a8101ad62ea690030a7",
+        "object": "chatkit.thread",
+        "created_at": 1769142668,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "65bdd11a-7bc5-49ef-b427-b436b741d726"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972d0840b1c819484f22681a9cacf0609fcc6a9d4443ca0",
+        "object": "chatkit.thread",
+        "created_at": 1769132163,
+        "status": {
+          "type": "active"
+        },
+        "title": "Starting a Helpful Conversation",
+        "user": "11d4ee28-aa0f-428d-b106-bda2e737114e"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972d083fe4881909e3a9be383ef17ca099a21f593fb8d33",
+        "object": "chatkit.thread",
+        "created_at": 1769132163,
+        "status": {
+          "type": "active"
+        },
+        "title": "Meet Your AI Assistant",
+        "user": "667100e6-a1db-4edc-bf07-a97ddc0238b0"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972c335fa188197adbc3b40040a08000ed7949076aedd13",
+        "object": "chatkit.thread",
+        "created_at": 1769128757,
+        "status": {
+          "type": "active"
+        },
+        "title": "Starting Chat with AI",
+        "user": "11d4ee28-aa0f-428d-b106-bda2e737114e"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972a8fb63888195bbeae48b508a1561050001549f4f4868",
+        "object": "chatkit.thread",
+        "created_at": 1769122043,
+        "status": {
+          "type": "active"
+        },
+        "title": "Getting to Know AI",
+        "user": "a2cb7ad1-1158-4a14-9200-4bf1d28a8169"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972a63b2ab881948dd40238ce59f2b10ec5ed4fbdd54fe7",
+        "object": "chatkit.thread",
+        "created_at": 1769121339,
+        "status": {
+          "type": "active"
+        },
+        "title": "First Contact Chat",
+        "user": "11d4ee28-aa0f-428d-b106-bda2e737114e"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972a5723fac81969c2c48038b61514707b79780d200c36d",
+        "object": "chatkit.thread",
+        "created_at": 1769121138,
+        "status": {
+          "type": "active"
+        },
+        "title": "First Conversation with AI",
+        "user": "2a32a581-5d27-46a9-8a05-4b7ef41424be"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972a4d60bfc8190b1581b5da19267bc0b17b2ba451cdcbb",
+        "object": "chatkit.thread",
+        "created_at": 1769120981,
+        "status": {
+          "type": "active"
+        },
+        "title": null,
+        "user": "2a32a581-5d27-46a9-8a05-4b7ef41424be"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69728483596c8193b47a00d0e48e7e2a0573e007dc85eae5",
+        "object": "chatkit.thread",
+        "created_at": 1769112707,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introductory AI Conversation",
+        "user": "5cab1195-e5fb-47b1-97b7-f1465f911fac"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_6972712c5f7c8194ba8ca5a94c990d44062c20560199e3dd",
+        "object": "chatkit.thread",
+        "created_at": 1769107756,
+        "status": {
+          "type": "active"
+        },
+        "title": "Lock Repair Help",
+        "user": "a88fb993-7b14-4b0c-8e20-a6cfb2fce754"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697270cde02c8197bb16ab4c1513e31f0f57b320af48369a",
+        "object": "chatkit.thread",
+        "created_at": 1769107661,
+        "status": {
+          "type": "active"
+        },
+        "title": "First Greeting Exchange",
+        "user": "f1748ad4-358f-429d-b5d3-ba36978e760d"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69726293c3cc81959a10a01b5a68442a0d55a45bc976e7b4",
+        "object": "chatkit.thread",
+        "created_at": 1769104019,
+        "status": {
+          "type": "active"
+        },
+        "title": "Introductory AI User Chat",
+        "user": "445a9371-b69e-452a-b560-ac5a50ac8957"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_69725d488ff48190bfc13bb9b366d443030fe284d367fc67",
+        "object": "chatkit.thread",
+        "created_at": 1769102664,
+        "status": {
+          "type": "active"
+        },
+        "title": "Starting a Helpful Chat",
+        "user": "73691b3d-c1a9-4554-8812-1a9063e6447a"
+      },
+      "messages": []
+    },
+    {
+      "thread": {
+        "id": "cthr_697256ff6b4c81958cc5937e6dc127c101b4aad6ef7ddc88",
+        "object": "chatkit.thread",
+        "created_at": 1769101055,
+        "status": {
+          "type": "active"
+        },
+        "title": "Hello from AI",
+        "user": "6191354a-1671-494f-be92-94805d056371"
+      },
+      "messages": []
+    }
+  ]
+}

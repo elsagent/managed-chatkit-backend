@@ -1,0 +1,178 @@
+from __future__ import annotations
+
+import os
+from typing import Any, Dict, List, Optional
+
+from dotenv import load_dotenv
+from fastapi import APIRouter, HTTPException, Query
+from openai import OpenAI
+
+load_dotenv()
+
+router = APIRouter()
+
+# IMPORTANT:
+# This assumes you already have OPENAI_API_KEY in your backend env
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
+@router.get("/admin/health")
+def health() -> Dict[str, bool]:
+    return {"ok": True}
+
+
+@router.get("/admin/chatkit/threads")
+def list_chatkit_threads(
+    limit: int = Query(default=100, ge=1, le=100),
+    after: Optional[str] = None,
+) -> Any:
+    """
+    Lists Chatkit threads via OpenAI Chatkit.
+    """
+    try:
+        # Depending on SDK version, "list" might accept after or cursor.
+        # Your current working code already supports this route (returns 200),
+        # so keep it consistent.
+        if after:
+            return client.chatkit.threads.list(limit=limit, after=after)
+        return client.chatkit.threads.list(limit=limit)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/admin/chatkit/export")
+def export_chatkit(
+    threads_limit: int = Query(default=100, ge=1, le=100),
+    items_limit: int = Query(default=100, ge=1, le=100),
+    max_threads: int = Query(default=5000, ge=1, le=50000),
+) -> List[Dict[str, Any]]:
+    """
+    Exports threads + their items.
+
+    - Paginates threads until max_threads reached or no more.
+    - For each thread, fetches items (paginated) up to items_limit per page.
+    """
+    exported: List[Dict[str, Any]] = []
+
+    try:
+        after: Optional[str] = None
+        fetched = 0
+
+        while fetched < max_threads:
+            page = (
+                client.chatkit.threads.list(limit=threads_limit, after=after)
+                if after
+                else client.chatkit.threads.list(limit=threads_limit)
+            )
+
+            data = getattr(page, "data", None) or page.get("data", [])
+            has_more = getattr(page, "has_more", None)
+            if has_more is None:
+                has_more = page.get("has_more", False)
+
+            if not data:
+                break
+
+            for t in data:
+                if fetched >= max_threads:
+                    break
+
+                thread_id = t.id if hasattr(t, "id") else t.get("id")
+                title = t.title if hasattr(t, "title") else t.get("title")
+                user = t.user if hasattr(t, "user") else t.get("user")
+                created_at = t.created_at if hasattr(t, "created_at") else t.get("created_at")
+
+                # Fetch items for this thread (paged)
+                all_items: List[Any] = []
+                items_after: Optional[str] = None
+
+                while True:
+                    items_page = (
+                        client.chatkit.threads.items.list(thread_id, limit=items_limit, after=items_after)
+                        if items_after
+                        else client.chatkit.threads.items.list(thread_id, limit=items_limit)
+                    )
+
+                    items_data = getattr(items_page, "data", None) or items_page.get("data", [])
+                    items_has_more = getattr(items_page, "has_more", None)
+                    if items_has_more is None:
+                        items_has_more = items_page.get("has_more", False)
+
+                    all_items.extend(items_data)
+
+                    if not items_has_more or not items_data:
+                        break
+
+                    items_after = items_data[-1].id if hasattr(items_data[-1], "id") else items_data[-1].get("id")
+
+                exported.append(
+                    {
+                        "thread_id": thread_id,
+                        "title": title,
+                        "user": user,
+                        "created_at": created_at,
+                        "items": all_items,
+                    }
+                )
+
+                fetched += 1
+
+            if not has_more:
+                break
+
+            after = data[-1].id if hasattr(data[-1], "id") else data[-1].get("id")
+
+        return exported
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/admin/chatkit/thread/{thread_id}")
+def get_chatkit_thread(
+    thread_id: str,
+    items_limit: int = Query(default=100, ge=1, le=100),
+) -> Dict[str, Any]:
+    """
+    Fetch ONE thread and its items (paged).
+    This is the clean endpoint your dashboard should use for the /threads/:id page.
+    """
+    try:
+        t = client.chatkit.threads.retrieve(thread_id)
+
+        title = t.title if hasattr(t, "title") else t.get("title")
+        user = t.user if hasattr(t, "user") else t.get("user")
+        created_at = t.created_at if hasattr(t, "created_at") else t.get("created_at")
+
+        all_items: List[Any] = []
+        items_after: Optional[str] = None
+
+        while True:
+            items_page = (
+                client.chatkit.threads.items.list(thread_id, limit=items_limit, after=items_after)
+                if items_after
+                else client.chatkit.threads.items.list(thread_id, limit=items_limit)
+            )
+
+            items_data = getattr(items_page, "data", None) or items_page.get("data", [])
+            items_has_more = getattr(items_page, "has_more", None)
+            if items_has_more is None:
+                items_has_more = items_page.get("has_more", False)
+
+            all_items.extend(items_data)
+
+            if not items_has_more or not items_data:
+                break
+
+            items_after = items_data[-1].id if hasattr(items_data[-1], "id") else items_data[-1].get("id")
+
+        return {
+            "thread_id": t.id if hasattr(t, "id") else t.get("id"),
+            "title": title,
+            "user": user,
+            "created_at": created_at,
+            "items": all_items,
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
