@@ -2,4 +2,4 @@ fastapi
 uvicorn
 httpx
 openai
-chatkit
+chatkitpython-dotenv>=1.0.0
