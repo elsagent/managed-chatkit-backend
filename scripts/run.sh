@@ -1,42 +1,26 @@
 #!/usr/bin/env bash
-
-# Start the Managed ChatKit FastAPI backend.
-
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Always run from repo root (where package.json is), but point Python to backend/
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+cd "$REPO_ROOT"
 
-cd "$PROJECT_ROOT"
+echo "[backend] Installing backend deps..."
+python -m pip install --upgrade pip
 
-if [ ! -d ".venv" ]; then
-  echo "Creating virtual env in $PROJECT_ROOT/.venv ..."
-  python -m venv .venv
-fi
-
-source .venv/bin/activate
-
-echo "Installing backend deps (editable) ..."
-pip install -e . >/dev/null
-
-# Load env vars from the repo's .env.local (if present) so OPENAI_API_KEY
-# does not need to be exported manually.
-ENV_FILE="$PROJECT_ROOT/../.env.local"
-if [ -z "${OPENAI_API_KEY:-}" ] && [ -f "$ENV_FILE" ]; then
-  echo "Sourcing OPENAI_API_KEY from $ENV_FILE"
-  # shellcheck disable=SC1090
-  set -a
-  . "$ENV_FILE"
-  set +a
-fi
-
-if [ -z "${OPENAI_API_KEY:-}" ]; then
-  echo "Set OPENAI_API_KEY in your environment or in .env.local before running this script."
+# Install deps (no editable install)
+if [ -f "backend/requirements.txt" ]; then
+  pip install -r backend/requirements.txt
+elif [ -f "requirements.txt" ]; then
+  pip install -r requirements.txt
+else
+  echo "[backend] ERROR: requirements.txt not found."
   exit 1
 fi
 
-export PYTHONPATH="$PROJECT_ROOT${PYTHONPATH:+:$PYTHONPATH}"
+export HOST="${HOST:-0.0.0.0}"
+export PORT="${PORT:-8000}"
 
-echo "Starting Managed ChatKit backend on http://127.0.0.1:8000 ..."
-exec uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
-
+echo "[backend] Starting uvicorn on ${HOST}:${PORT} ..."
+# ✅ Key fix: --app-dir backend so import "app.main:app" works
+exec uvicorn app.main:app --app-dir backend --host "${HOST}" --port "${PORT}" --reload
